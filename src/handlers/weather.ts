@@ -9,7 +9,7 @@ export const getWeather = async (req, res) => {
 
   // fetch weather details
   const results = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=1ae613db94d24e42819185935241901&q=${req.params.location}&aqi=no`
+    `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=${req.params.location}&aqi=no`
   );
 
   //   //fetch the next forecast view for the day
