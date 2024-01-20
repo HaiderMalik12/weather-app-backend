@@ -21,24 +21,6 @@ interface Forecast {
 }
 
 export function destructureForecast(forecastDay) {
-  //   const forecastOut: Forecast = {};
-
-  //   console.log(JSON.stringify(forecastInput));
-
-  //   forecastOut.date = forecastInput.date;
-  //   //   forecastOut.day.avgtemp_f = forecastInput.day.avgtemp_f;
-  //   forecastOut.day.condition.icon = forecastInput.day.condition.icon;
-
-  //   forecastOut.hours = forecastInput.hour.map((hour) => {
-  //     return {
-  //       time: hour.time,
-  //       humidity: hour.humidity,
-  //       temperature: hour.temp_f,
-  //       icon: hour.condition.icon,
-  //     };
-  //   });
-  //   return forecastOut;
-
   const currentDay: Forecast = {
     date: '',
     day: {
