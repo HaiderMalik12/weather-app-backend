@@ -4,12 +4,34 @@ import fetch from 'node-fetch';
 export const getWeather = async (req, res) => {
   // TODO: validation on location
   const results = await fetch(
-    // https://api.weatherapi.com/v1/forecast.json?q=Faisalabad&days=7&key=1ae613db94d24e42819185935241901
     `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.params.location}&aqi=no&days=7`
   );
 
   const weather = await results.json();
 
+  //create dummy forecast array
+  const forecast = {
+    day: 'Sunday',
+    hours: [
+      {
+        temprature: '44',
+        time: '12 AM',
+      },
+      {
+        temprature: '46',
+        time: '1 AM',
+      },
+      {
+        temprature: '39',
+        time: '2 AM',
+      },
+    ],
+  };
+  // console.log(weather);
+
+  // the object structure would be day, icon, time, and temprature
+  console.log(weather.forecast.forecastday[0].day);
+  console.log(weather.forecast.forecastday[0].hour[0]);
   return res.json({
     city: weather.location.name,
     date: weather.location.localtime,
@@ -18,5 +40,6 @@ export const getWeather = async (req, res) => {
     humidity: weather.current.humidity,
     wind: weather.current.wind_degree,
     icon: weather.current.condition.icon,
+    forecast,
   });
 };
