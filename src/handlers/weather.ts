@@ -20,7 +20,7 @@ export const getWeather = async (req, res) => {
     city: weather.location.name,
     date: extractDate(weather.location.localtime),
     time: extractTime(weather.location.localtime),
-    temprature: weather.current.temp_f,
+    temprature: weather.current.temp_c,
     humidity: weather.current.humidity,
     wind: weather.current.wind_degree,
     icon: weather.current.condition.icon,

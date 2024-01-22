@@ -10,7 +10,7 @@ interface Condition {
 }
 
 interface Day {
-  avgtemp_f?: number;
+  avgtemp_c?: number;
   condition?: Condition;
 }
 
@@ -24,7 +24,7 @@ export function destructureForecast(forecastDay) {
   const currentDay: Forecast = {
     date: '',
     day: {
-      avgtemp_f: 0,
+      avgtemp_c: 0,
       condition: {
         icon: '',
       },
@@ -32,13 +32,13 @@ export function destructureForecast(forecastDay) {
     hours: [{ time: '', humidity: 0, temperature: 0, icon: '' }],
   };
   currentDay.date = forecastDay.date;
-  currentDay.day.avgtemp_f = forecastDay.day.avgtemp_f;
+  currentDay.day.avgtemp_c = forecastDay.day.avgtemp_c;
   currentDay.day.condition.icon = forecastDay.day.condition.icon;
   currentDay.hours = forecastDay.hour.map((hour) => {
     return {
       time: extractTime(hour.time),
       humidity: hour.humidity,
-      temperature: hour.temp_f,
+      temperature: hour.temp_c,
       icon: hour.condition.icon,
     };
   });
