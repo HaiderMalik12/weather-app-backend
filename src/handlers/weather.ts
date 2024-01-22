@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator';
 import fetch from 'node-fetch';
-import { destructureForecast } from '../utils/utils';
+import { destructureForecast, extractDate, extractTime } from '../utils/utils';
 
 export const getWeather = async (req, res) => {
   // TODO: validation on location
@@ -16,10 +16,12 @@ export const getWeather = async (req, res) => {
     destructureForecast(nextDay),
   ];
 
+  console.log(weather.location.localtime);
+
   return res.json({
     city: weather.location.name,
-    date: weather.location.localtime,
-    time: new Date().getTime().toString(),
+    date: extractDate(weather.location.localtime),
+    time: extractTime(weather.location.localtime),
     temprature: weather.current.temp_f,
     humidity: weather.current.humidity,
     wind: weather.current.wind_degree,
