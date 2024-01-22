@@ -16,8 +16,6 @@ export const getWeather = async (req, res) => {
     destructureForecast(nextDay),
   ];
 
-  console.log(weather.location.localtime);
-
   return res.json({
     city: weather.location.name,
     date: extractDate(weather.location.localtime),

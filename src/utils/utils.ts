@@ -36,7 +36,7 @@ export function destructureForecast(forecastDay) {
   currentDay.day.condition.icon = forecastDay.day.condition.icon;
   currentDay.hours = forecastDay.hour.map((hour) => {
     return {
-      time: hour.time,
+      time: extractTime(hour.time),
       humidity: hour.humidity,
       temperature: hour.temp_f,
       icon: hour.condition.icon,
