@@ -38,7 +38,7 @@ export function destructureForecast(forecastDay) {
     return {
       time: hour.time,
       humidity: hour.humidity,
-      temprature: hour.temp_f,
+      temperature: hour.temp_f,
       icon: hour.condition.icon,
     };
   });
