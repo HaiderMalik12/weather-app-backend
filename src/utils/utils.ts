@@ -49,13 +49,11 @@ export function destructureForecast(forecastDay) {
 export function extractDate(dateString) {
   const dateObject = new Date(dateString);
   const separateDate = dateObject.toLocaleDateString();
-  console.log('Separate Date:', separateDate);
   return separateDate;
 }
 
 export function extractTime(dateString) {
   const dateObject = new Date(dateString);
   const separateTime = dateObject.toLocaleTimeString();
-  console.log('Separate Time:', separateTime);
   return separateTime;
 }
