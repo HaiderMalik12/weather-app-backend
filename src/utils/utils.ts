@@ -34,6 +34,11 @@ export function destructureForecast(forecastDay) {
   currentDay.date = forecastDay.date;
   currentDay.day.avgtemp_c = forecastDay.day.avgtemp_c;
   currentDay.day.condition.icon = forecastDay.day.condition.icon;
+
+  // Send the next hours details not the past hours
+  // if the hour is past then skip the
+  // send the current and the future hours of the day
+
   currentDay.hours = forecastDay.hour.map((hour) => {
     return {
       time: extractTime(hour.time),
@@ -42,6 +47,8 @@ export function destructureForecast(forecastDay) {
       icon: hour.condition.icon,
     };
   });
+
+  console.log(currentDay.hours);
 
   return currentDay;
 }
