@@ -3,6 +3,7 @@ interface Hour {
   humidity?: number;
   temperature?: number;
   icon?: string;
+  hoursInNumber?: number;
 }
 
 interface Condition {
@@ -21,7 +22,6 @@ interface Forecast {
 }
 
 export function destructureForecast(forecastDay) {
-  console.log('forecastDay: ', forecastDay);
   const currentDay: Forecast = {
     date: '',
     day: {
