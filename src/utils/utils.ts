@@ -21,6 +21,7 @@ interface Forecast {
 }
 
 export function destructureForecast(forecastDay) {
+  console.log('forecastDay: ', forecastDay);
   const currentDay: Forecast = {
     date: '',
     day: {
@@ -35,20 +36,17 @@ export function destructureForecast(forecastDay) {
   currentDay.day.avgtemp_c = forecastDay.day.avgtemp_c;
   currentDay.day.condition.icon = forecastDay.day.condition.icon;
 
-  // Send the next hours details not the past hours
-  // if the hour is past then skip the
-  // send the current and the future hours of the day
-
   currentDay.hours = forecastDay.hour.map((hour) => {
     return {
       time: extractTime(hour.time),
       humidity: hour.humidity,
       temperature: hour.temp_c,
       icon: hour.condition.icon,
+      hoursInNumber: getHoursInNumbers(hour.time),
     };
   });
 
-  console.log(currentDay.hours);
+  // console.log(currentDay.hours);
 
   return currentDay;
 }
@@ -66,4 +64,16 @@ export function extractTime(dateString) {
 
   const separateTime = dateObject.toLocaleTimeString(undefined, options);
   return separateTime;
+}
+
+export function getHoursInNumbers(dateString) {
+  const dateObject = new Date(dateString);
+
+  const options: any = {
+    hour: 'numeric',
+    hour12: false,
+  };
+
+  const hoursInNumners = dateObject.toLocaleTimeString(undefined, options);
+  return hoursInNumners;
 }
