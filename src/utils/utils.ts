@@ -61,6 +61,9 @@ export function extractDate(dateString) {
 
 export function extractTime(dateString) {
   const dateObject = new Date(dateString);
-  const separateTime = dateObject.toLocaleTimeString();
+
+  const options: any = { hour: 'numeric', minute: 'numeric', hour12: true };
+
+  const separateTime = dateObject.toLocaleTimeString(undefined, options);
   return separateTime;
 }
