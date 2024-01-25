@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc",
-    "vercel-build": "npm run build && mv -T dist public",
+    "vercel-build": "npm run build && mv dist public",
     "vercel-start": "npm run vercel-build && vercel --prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
